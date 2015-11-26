@@ -11,7 +11,6 @@
     this.currentTime = 0;
     this.history = [];
     this.bindEvents();
-    this.play();
   };
 
   PlaylistView.prototype.bindEvents = function () {
@@ -19,19 +18,24 @@
     this.$rootEl.find('img.rewind').on('click', this.previousSong.bind(this));
   };
 
-  // add to playlist functions
+  // playlist functions to adjust contents
 
   // removes current playlist and replaces it with this album
-  PlaylistView.prototype.replacePlaylist = function (album) {
-    this.playlist = album.songs;
-    var $songs = album.makeSongList();
+  PlaylistView.prototype.replacePlaylist = function (album, initialSongIdx) {
+    // takes everything from the album starting from that song
+    initialSongIdx = initialSongIdx || 0;
+    this.playlist = album.songs.slice(initialSongIdx);
+    var $songs = window.MusicPlayer.AlbumView.prototype.makeSongList.call(this, album, initialSongIdx);
+    this.currentSong = album.song((initialSongIdx));
+    this.currentSongIndex = initialSongIdx;
     this.$rootEl.find('article.playlist').html($songs);
+    this.play();
   };
 
   // adds an album to the end of the playlist
   PlaylistView.prototype.addAlbum = function (album) {
     this.playlist = this.playlist.concat(album.songs);
-    var $songs = album.makeSongList();
+    var $songs = window.MusicPlayer.AlbumView.prototype.makeSongList.call(this, album);
     this.$rootEl.find('article.playlist ul.songs').append($songs);
   };
 

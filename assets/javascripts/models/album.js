@@ -7,41 +7,14 @@
     this.songs = options.songs;
   };
 
-  // creates a typical section for this album
-  Album.prototype.makeEntry = function () {
-    var $album = $('<article class="album">');
-
-    var $info = $('<div class="album-info group">');
-    var $title = $('<h1 class="album-title group">');
-    var $artist = $('<h2 class="album-artist group">');
-    $title.text(this.title);
-    $artist.text(this.artist);
-    $info.append($title).append($artist);
-    $album.append($info);
-
-    $album.append(this.makeSongList());
-
-    return $album;
-  };
-
-  // create a list of songs
-  Album.prototype.makeSongList = function () {
-    var $songsList = $('<ul class="songs">');
-    this.each(function (song) {
-      $songsList.append(song.makeEntry());
-    });
-    return $songsList;
-  };
-
-  // create a basic form for a new song
-  Album.prototype.makeForm = function () {
-    // var $('<input type="text">')
-  };
-
   // utility methods
 
   Album.prototype.first = function () {
     return this.songs[0];
+  };
+
+  Album.prototype.song = function (num) {
+    return this.songs[num];
   };
 
   Album.prototype.next = function (currentSong) {
@@ -61,8 +34,8 @@
   };
 
   Album.prototype.each = function (func) {
-    this.songs.forEach(function(song){
-      func(song);
+    this.songs.forEach(function(song, idx){
+      func(song, idx);
     });
   };
 })();

@@ -138,6 +138,15 @@ article.album {
 
 div.album-info h1.album-title {
   float: left;
+  cursor: pointer;
+}
+
+div.album-info h1.album-title:hover {
+  background: #d5e4fa
+}
+
+div.album-info h1.album-title:active {
+  background: #8FB7F2;
 }
 
 div.album-info h2.album-artist {

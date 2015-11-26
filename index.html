@@ -13,6 +13,7 @@
     <script src="./assets/javascripts/seed.js" charset="utf-8"></script>
 
     <script src="./assets/javascripts/utils/jquery-2.1.4.min.js" charset="utf-8"></script>
+    <script src="./assets/javascripts/views/album.js" charset="utf-8"></script>
     <script src="./assets/javascripts/views/library.js" charset="utf-8"></script>
     <script src="./assets/javascripts/views/playlist.js" charset="utf-8"></script>
   </head>
@@ -54,11 +55,11 @@
     </div>
 
     <script type="text/javascript">
-      var libView = new window.MusicPlayer.LibraryView({
+      window.MusicPlayer.libView = new window.MusicPlayer.LibraryView({
         library: window.MusicPlayer.DemoLibrary,
         $rootEl: $('section.master-library')
       });
-      var playlistView = new window.MusicPlayer.PlaylistView({
+      window.MusicPlayer.playlistView = new window.MusicPlayer.PlaylistView({
         initialAlbum: window.MusicPlayer.DemoLibrary.first(),
         $rootEl: $('section.currently-playing')
       });
