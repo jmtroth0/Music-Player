@@ -1,0 +1,153 @@
+ /* element reset */
+
+html, body, h1, h2, h3,
+h4, h5, h6, div, button,
+ul, li, a, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: content-box;
+  background: transparent;
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* header */
+
+header {
+  position: fixed;
+  height: 40px;
+  width: 100%;
+  top: 0;
+  background: black;
+  color: white;
+}
+
+header h1 {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  transform: translateY(50%) translateX(50%);
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+/* main layout */
+
+div.container {
+  margin: 60px auto;
+  max-width: 600px;
+}
+
+section.group {
+  float: left;
+  margin-left: 20px;
+}
+
+section.currently-playing {
+  width: 240px;
+  position: fixed;
+}
+
+section.master-library {
+  width: calc(100% - 300px);
+  overflow: scroll;
+  float: right;
+}
+
+h1.section-title {
+  font-size: 28px;
+}
+
+/* buttons */
+
+article.buttons {
+  margin: 10px auto;
+  width: 130px
+}
+
+article.buttons img {
+  border: 2px solid black;
+  padding: 10px;
+}
+
+article.buttons img:hover {
+  background: #eee;
+}
+
+article.buttons img:active {
+  background: #aaa;
+}
+
+/* playing time */
+
+article.playing {
+  height: 20px;
+  padding: 5px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.song-length-bar {
+  background: #8FB7F2;
+  height: 50%;
+  width: 0;
+}
+
+/* albums */
+
+article.playlist {
+  border: 2px solid black;
+}
+
+article.album {
+  padding: 10px;
+  margin-bottom: 10px;
+  max-height: 100px;
+  border: 1px solid black;
+  overflow: scroll;
+}
+
+article.album ul.songs {
+  padding: 0 15px;
+}
+
+ul.songs li.song:hover {
+  background: #d5e4fa;
+}
+
+ul.songs li.song:active {
+  background: #8FB7F2;
+}
+
+/* songs */
+
+li.song {
+  position: relative;
+  cursor: pointer;
+}
+
+li.song span {
+  display: block;
+}
+
+li.song span.song-length {
+  float: right;
+  margin-top: -17px;
+}
