@@ -5,6 +5,8 @@
     <title>Dotify</title>
     <link rel="stylesheet" type="text/css" href="./assets/stylesheets/main.css">
 
+    <script src="./assets/javascripts/utils/methods.js" charset="utf-8"></script>
+
     <script src="./assets/javascripts/models/song.js" charset="utf-8"></script>
     <script src="./assets/javascripts/models/album.js" charset="utf-8"></script>
     <script src="./assets/javascripts/models/library.js" charset="utf-8"></script>
@@ -26,34 +28,24 @@
           <img class="rewind" src="./assets/icons/rewind.png">
           <img class="pause" src="./assets/icons/pause.png" hidden>
           <img class="play" src="./assets/icons/play.png">
-          <img class="fast" src="./assets/icons/fast-forward.png">
+          <img class="skip" src="./assets/icons/skip.png">
         </article>
 
         <article class="playing">
           <div class="song-length-bar"></div>
+          <span class="song-title">XXXXXX</span>
           <div class="time">
-            <span class="time-current">0:00</span> /
+            <span class="current-time">0:00</span> /
             <span class="total-time">0:00</span>
           </div>
         </article>
 
-        <article class="playlist album">
-          <h1 class="album-title">Album X</h1>
-          <ul class="songs">
-            <li class="song">
-              <span class="song-title">Song 1</span>
-              <span class="song-length">3:00</span>
-            </li>
-            <li class="song">
-              <span class="song-title">Song 2</span>
-              <span class="song-length">3:00</span>
-            </li>
-            <li class="song">
-              <span class="song-title">Song 3</span>
-              <span class="song-length">3:00</span>
-            </li>
-          </ul>
-        </article>
+        <label>Playlist
+        <article class="playlist"></article>
+        </label>
+        <label>History
+          <article class="history"><ul class="songs"></ul></article>
+        </label>
       </section>
 
       <section class="master-library group">
@@ -65,8 +57,11 @@
       var libView = new window.MusicPlayer.LibraryView({
         library: window.MusicPlayer.DemoLibrary,
         $rootEl: $('section.master-library')
-      })
-      libView.placeAlbums();
+      });
+      var playlistView = new window.MusicPlayer.PlaylistView({
+        initialAlbum: window.MusicPlayer.DemoLibrary.first(),
+        $rootEl: $('section.currently-playing')
+      });
     </script>
   </body>
 </html>
