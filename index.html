@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dotify</title>
+    <link rel="stylesheet" type="text/css" href="./assets/stylesheets/main.css">
+
+    <script src="./assets/javascripts/models/song.js" charset="utf-8"></script>
+    <script src="./assets/javascripts/models/album.js" charset="utf-8"></script>
+    <script src="./assets/javascripts/models/library.js" charset="utf-8"></script>
+    <script src="./assets/javascripts/seed.js" charset="utf-8"></script>
+
+    <script src="./assets/javascripts/utils/jquery-2.1.4.min.js" charset="utf-8"></script>
+    <script src="./assets/javascripts/views/library.js" charset="utf-8"></script>
+    <script src="./assets/javascripts/views/playlist.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Dotify</h1>
+    </header>
+    <div class="container group">
+      <section class="currently-playing group">
+        <h1 class="section-title">Playlist</h1>
+
+        <article class="buttons">
+          <img class="rewind" src="./assets/icons/rewind.png">
+          <img class="pause" src="./assets/icons/pause.png" hidden>
+          <img class="play" src="./assets/icons/play.png">
+          <img class="fast" src="./assets/icons/fast-forward.png">
+        </article>
+
+        <article class="playing">
+          <div class="song-length-bar"></div>
+          <div class="time">
+            <span class="time-current">0:00</span> /
+            <span class="total-time">0:00</span>
+          </div>
+        </article>
+
+        <article class="playlist album">
+          <h1 class="album-title">Album X</h1>
+          <ul class="songs">
+            <li class="song">
+              <span class="song-title">Song 1</span>
+              <span class="song-length">3:00</span>
+            </li>
+            <li class="song">
+              <span class="song-title">Song 2</span>
+              <span class="song-length">3:00</span>
+            </li>
+            <li class="song">
+              <span class="song-title">Song 3</span>
+              <span class="song-length">3:00</span>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="master-library group">
+        <h1 class="section-title">Library</h1>
+      </section>
+    </div>
+
+    <script type="text/javascript">
+      var libView = new window.MusicPlayer.LibraryView({
+        library: window.MusicPlayer.DemoLibrary,
+        $rootEl: $('section.master-library')
+      })
+      libView.placeAlbums();
+    </script>
+  </body>
+</html>
