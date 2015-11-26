@@ -4,11 +4,10 @@
   var Song = window.MusicPlayer.Song = function (options) {
     this.title = options.title;
     this.time = options.time;
-    var seconds = "" + (this.time % 60);
-    if (seconds.length === 1) { seconds = "0" + seconds; }
-    this.timeString = Math.floor(this.time / 60) + ":" + seconds;
+    this.timeString = window.MusicPlayer.secondsToString(this.time);
   };
 
+  // creates a typical entry for a song
   Song.prototype.makeEntry = function () {
     var $li = $('<li class="song">');
     var $title = $('<span class="song-title group">');
@@ -17,6 +16,14 @@
     $time.text(this.timeString);
     $li.append($title).append($time);
     return $li;
+  };
+
+  Song.prototype.makeForm = function () {
+    var $title = $('<input type="text" name="song[title]"');
+    var $minutes = $('<input type="number" name="song[minutes]">');
+    var $seconds = $('<input type="number" name="song[seconds]">');
+    var $form = $('<form>').append($title).append($minutes).append($seconds);
+    return $form;
   };
 
 })();
