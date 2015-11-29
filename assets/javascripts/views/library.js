@@ -7,7 +7,7 @@
     this.placeAlbums();
 
     this.bindEvents();
-    this.checkSize();
+    this.adjustSize();
   };
 
   LibraryView.prototype.bindEvents = function () {
