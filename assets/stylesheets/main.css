@@ -14,7 +14,8 @@ ul, li, a, input {
   vertical-align: inherit;
   box-sizing: content-box;
   background: transparent;
-  font-family: sans-serif;
+  font-family: "HelveticaNeue-Light";
+  font-weight: 300;
 }
 
 ul {
@@ -27,6 +28,10 @@ ul {
   clear: both;
 }
 
+body {
+  background-image: url(../images/background.png);
+}
+
 /* header */
 
 header {
@@ -36,6 +41,7 @@ header {
   top: 0;
   background: black;
   color: white;
+  z-index: 500;
 }
 
 header h1 {
@@ -67,32 +73,71 @@ section.master-library {
 
 h1.section-title {
   font-size: 28px;
+  color: #73B1B7;
+}
+
+div.placeholder {
+  width: 240px;
 }
 
 /* buttons */
 
 article.buttons {
   margin: 10px auto;
-  width: 130px
+  width: 130px;
+  cursor: pointer;
 }
 
 article.buttons img {
   border: 2px solid black;
+  border-radius: 2px;
   padding: 10px;
+  opacity: .7;
 }
 
-article.buttons img:hover {
-  background: #eee;
+article.buttons img.play {
+  background: #d5fdd5;
 }
 
-article.buttons img:active {
-  background: #aaa;
+article.buttons img.play:hover {
+  background: #88e188;
+}
+
+article.buttons img.play:active {
+  background: #79c879;
+}
+
+article.buttons img.pause {
+  background: #ffe4b2;
+}
+
+article.buttons img.pause:hover {
+  background: #ffc04c;
+}
+
+article.buttons img.pause:active {
+  background: #ffa500;
+}
+
+article.buttons img.rewind,
+article.buttons img.skip {
+  background: #f2e5f2;
+}
+
+article.buttons img.rewind:hover,
+article.buttons img.skip:hover {
+  background: #d8b2d8;
+}
+
+article.buttons img.rewind:active,
+article.buttons img.skip:active {
+  background: #cc99cc;
 }
 
 /* playing time */
 
 article.playing {
-  height: 20px;
+  height: 23px;
   padding: 5px;
   border: 1px solid black;
   margin-bottom: 20px;
@@ -118,16 +163,22 @@ article.playing .time{
 
 article.playlist,
 article.history {
-  border: 2px solid black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #F0DBDB;
+  opacity: .7;
   margin-bottom: 20px;
   padding: 10px 15px;
-  max-height: 75px;
+  max-height: 80px;
   overflow-y: scroll;
 }
 
 section.master-library article.album {
-  border: 1px solid black;
   margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #e0fde0;
+  color: black;
 }
 
 article.album {
