@@ -7,10 +7,28 @@
     this.placeAlbums();
 
     this.bindEvents();
+    this.checkSize();
   };
 
   LibraryView.prototype.bindEvents = function () {
     this.$rootEl.find('button.new-album').on('click', this.newAlbumForm.bind(this));
+    $(window).on('resize', this.checkSize.bind(this));
+  };
+
+  LibraryView.prototype.checkSize = function (e) {
+    if (window.innerWidth < 600) {
+      this.$rootEl.css({
+        'float': 'none',
+        'width': '300px',
+        'margin': '0 0 0 30px',
+      });
+    } else {
+      this.$rootEl.css({
+        'float': 'right',
+        'margin': '0 auto',
+        'transform': 'none'
+      });
+    }
   };
 
   // places the album entries onto the page in the library section

@@ -11,11 +11,27 @@
     this.currentTime = 0;
     this.history = [];
     this.bindEvents();
+    this.checkSize();
   };
 
   PlaylistView.prototype.bindEvents = function () {
     this.$rootEl.find('img.skip').on('click', this.nextSong.bind(this));
     this.$rootEl.find('img.rewind').on('click', this.previousSong.bind(this));
+    $(window).on('resize', this.checkSize.bind(this));
+  };
+
+  PlaylistView.prototype.checkSize = function (e) {
+    if (window.innerWidth < 600) {
+      this.$rootEl.css({
+        'position': 'relative',
+        'margin-left': '30px'
+      });
+    } else {
+      this.$rootEl.css({
+        'position': 'fixed',
+        'margin-left': 'none'
+      });
+    }
   };
 
   // playlist functions to adjust contents
