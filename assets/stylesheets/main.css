@@ -16,6 +16,7 @@ ul, li, a, input {
   background: transparent;
   font-family: "HelveticaNeue-Light";
   font-weight: 300;
+  opacity: 1;
 }
 
 ul {
@@ -121,7 +122,7 @@ article.buttons img.pause:active {
 
 article.buttons img.rewind,
 article.buttons img.skip {
-  background: #f2e5f2;
+  background: #f9d3f9;
 }
 
 article.buttons img.rewind:hover,
@@ -139,7 +140,10 @@ article.buttons img.skip:active {
 article.playing {
   height: 23px;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #e0fde0;
+  opacity: .7;
   margin-bottom: 20px;
   overflow: hidden;
 }
@@ -177,7 +181,8 @@ section.master-library article.album {
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  background: #e0fde0;
+  background: #ffffe3;
+  opacity: .7;
   color: black;
 }
 
