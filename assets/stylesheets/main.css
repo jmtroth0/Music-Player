@@ -123,20 +123,26 @@ article.buttons img {
   opacity: .7;
 }
 
-article.buttons img.play {
-  background: #d5fdd5;
+article.buttons img.play,
+article.buttons img.rewind,
+article.buttons img.skip {
+  background: #F0DBDB;
 }
 
-article.buttons img.play:hover {
+article.buttons img.play:hover,
+article.buttons img.rewind:hover,
+article.buttons img.skip:hover {
   background: #88e188;
 }
 
-article.buttons img.play:active {
+article.buttons img.play:active,
+article.buttons img.rewind:active,
+article.buttons img.skip:active {
   background: #79c879;
 }
 
 article.buttons img.pause {
-  background: #ffe4b2;
+  background: #F0DBDB;
 }
 
 article.buttons img.pause:hover {
@@ -149,7 +155,7 @@ article.buttons img.pause:active {
 
 article.buttons img.rewind,
 article.buttons img.skip {
-  background: #f9d3f9;
+  background: #F0DBDB;
 }
 
 article.buttons img.rewind:hover,
