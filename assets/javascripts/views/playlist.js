@@ -20,6 +20,7 @@
     $(window).on('resize', this.checkSize.bind(this));
   };
 
+  // if it's too small, make it a single column rather than a fixed situation
   PlaylistView.prototype.checkSize = function (e) {
     if (window.innerWidth < 600) {
       this.$rootEl.css({
@@ -156,7 +157,6 @@
 
   // directs what happens when a song is chosen from the playlist
   PlaylistView.prototype.chooseSong = function (e) {
-    debugger
     if (e.ctrlkey || e.metaKey) {
       // if the cmd key is pressed, remove that song
       this.removeSong($(e.target).parent().index());

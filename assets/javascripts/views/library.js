@@ -15,6 +15,7 @@
     $(window).on('resize', this.adjustSize.bind(this));
   };
 
+  // if it's too small, make it a single column rather than a fixed situation
   LibraryView.prototype.adjustSize = function (e) {
     if (window.innerWidth < 600) {
       this.$rootEl.css({
@@ -25,8 +26,8 @@
     } else {
       this.$rootEl.css({
         'float': 'right',
+        'width': "",
         'margin': '0 auto',
-        'transform': 'none'
       });
     }
   };
@@ -63,13 +64,18 @@
 
   LibraryView.prototype.createAlbum = function (e) {
     e.preventDefault();
+    // get info into an object
     var formData = $(e.currentTarget).serializeJSON();
     var album = new window.MusicPlayer.Album({
       title: formData.album.title,
       artist: formData.album.artist
     });
+
+    // add it to the library and to the UI
     this.library.push(album);
     this.placeAlbum(album);
+
+    // close the modal
     this.closeModal($(e.currentTarget).parent().parent());
   };
 
