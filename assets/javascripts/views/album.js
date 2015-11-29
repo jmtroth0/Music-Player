@@ -82,10 +82,12 @@
     return $songsList;
   };
 
+  // method on submit of form
   AlbumView.prototype.createSong = function (e) {
     e.preventDefault();
     var formData = $(e.currentTarget).serializeJSON();
 
+    // validate that minutes and seconds are both numbers
     var minutes = parseInt(formData.song.minutes);
     var seconds = parseInt(formData.song.seconds);
     if (minutes !== minutes) {
@@ -102,14 +104,16 @@
       time: parseInt(minutes) * 60 + parseInt(seconds)
     });
 
+    // reset the form
     $(e.currentTarget).find('input').val("");
     $(e.currentTarget).find('input').css("background", "");
 
+    // add it to the bottom
     var $song = song.makeEntry();
     $song.data({ 'id': this.album.songs.length, type: 'song' });
     this.$el.find('ul.songs').append($song);
     this.$el.scroll();
-    this.$el.animate({ scrollTop: 1000 }, 1000);
+    this.$el.animate({ scrollTop: this.$el.find('ul').height() }, 500);
     this.album.songs.push(song);
   };
 })();
