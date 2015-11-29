@@ -85,15 +85,28 @@
   AlbumView.prototype.createSong = function (e) {
     e.preventDefault();
     var formData = $(e.currentTarget).serializeJSON();
+
+    var minutes = parseInt(formData.song.minutes);
+    var seconds = parseInt(formData.song.seconds);
+    if (minutes !== minutes) {
+      $(e.currentTarget).find('input.minutes').css('background', 'red');
+      return;
+    }
+    if (seconds !== seconds) {
+      $(e.currentTarget).find('input.seconds').css('background', 'red');
+      return;
+    }
+
     var song = new window.MusicPlayer.Song({
       title: formData.song.title,
-      time: parseInt(formData.song.minutes) * 60 + parseInt(formData.song.seconds)
+      time: parseInt(minutes) * 60 + parseInt(seconds)
     });
 
     var $song = song.makeEntry();
     $song.data({ 'id': this.album.songs.length, type: 'song' });
     this.$el.find('ul.songs').append($song);
-
+    this.$el.scroll();
+    this.$el.animate({ scrollTop: 1000 }, 1000);
     this.album.songs.push(song);
   };
 })();
