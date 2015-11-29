@@ -56,10 +56,10 @@
     }
   };
 
+  // removes a song from target idx
   PlaylistView.prototype.removeSong = function (playlistIdx) {
-    console.log(this.playlist[playlistIdx].title);
-    this.playlist.splice(playlistIdx, 1);
-    this.$rootEl.find('ul.songs li').eq(playlistIdx).remove();
+    this.playlist.splice(playlistIdx, 1); // removes from playlist object
+    this.$rootEl.find('ul.songs li').eq(playlistIdx).remove(); // and UI
   };
 
   // control player
@@ -138,6 +138,7 @@
     }
   };
 
+  // directs what happens when a song is chosen from the playlist
   PlaylistView.prototype.chooseSong = function (e) {
     if (e.ctrlkey || e.metaKey) {
       // if the cmd key is pressed, remove that song
