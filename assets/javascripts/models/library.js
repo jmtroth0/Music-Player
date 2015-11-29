@@ -20,6 +20,10 @@
     return this.albums[0];
   };
 
+  Library.prototype.push = function (album) {
+    this.albums.push(album);
+  };
+
   Library.prototype.each = function (func) {
     this.albums.forEach(function(album){
       func(album);

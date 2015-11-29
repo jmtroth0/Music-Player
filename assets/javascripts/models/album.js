@@ -4,7 +4,7 @@
   var Album = window.MusicPlayer.Album = function (options) {
     this.title = options.title;
     this.artist = options.artist;
-    this.songs = options.songs;
+    this.songs = options.songs || [];
   };
 
   // utility methods
