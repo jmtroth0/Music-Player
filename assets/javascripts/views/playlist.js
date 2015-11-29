@@ -22,12 +22,15 @@
 
   // removes current playlist and replaces it with this album
   PlaylistView.prototype.replacePlaylist = function (album, initialSongIdx) {
-    // takes everything from the album starting from that song
+    // takes everything from the album starting from that song and replaces the playlist with that
     initialSongIdx = initialSongIdx || 0;
     this.playlist = album.songs.slice(initialSongIdx);
-    var $songs = window.MusicPlayer.AlbumView.prototype.makeSongList.call(this, album, initialSongIdx);
+    var $songs = window.MusicPlayer.AlbumView.prototype
+      .makeSongList.call(this, album, initialSongIdx);
+
     this.currentSong = album.song((initialSongIdx));
     this.currentSongIndex = initialSongIdx;
+    
     this.$rootEl.find('article.playlist').html($songs);
     this.play();
   };

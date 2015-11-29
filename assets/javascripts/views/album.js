@@ -28,6 +28,7 @@
         );
       }
     } else if ($(e.target).data('type') === 'title'){
+      // if you click the title, then do the same procedure, just with the entire album
       if (e.ctrlKey || e.metaKey) {
         window.MusicPlayer.playlistView.addAlbum(
           this.album
