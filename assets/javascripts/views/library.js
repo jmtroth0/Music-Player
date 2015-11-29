@@ -12,10 +12,10 @@
 
   LibraryView.prototype.bindEvents = function () {
     this.$rootEl.find('button.new-album').on('click', this.newAlbumForm.bind(this));
-    $(window).on('resize', this.checkSize.bind(this));
+    $(window).on('resize', this.adjustSize.bind(this));
   };
 
-  LibraryView.prototype.checkSize = function (e) {
+  LibraryView.prototype.adjustSize = function (e) {
     if (window.innerWidth < 600) {
       this.$rootEl.css({
         'float': 'none',

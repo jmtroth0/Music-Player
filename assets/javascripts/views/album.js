@@ -102,6 +102,9 @@
       time: parseInt(minutes) * 60 + parseInt(seconds)
     });
 
+    $(e.currentTarget).find('input').val("");
+    $(e.currentTarget).find('input').css("background", "");
+
     var $song = song.makeEntry();
     $song.data({ 'id': this.album.songs.length, type: 'song' });
     this.$el.find('ul.songs').append($song);
