@@ -56,7 +56,7 @@ input {
 }
 
 input:focus {
-  background: white
+  background: white;
 }
 
 /* header */
@@ -213,30 +213,6 @@ section.master-library article.album {
   color: black;
 }
 
-form.song input {
-  display: inline;
-  position: static;
-  font-size: 10px;
-}
-
-form.song input.title {
-  width: 130px;
-  margin: 2px 10px 2px 15px;
-}
-
-form.song input.minutes,
-form.song input.seconds {
-  padding: 3px;
-}
-
-form.song input.minutes {
-  width: 10px;
-}
-
-form.song input.seconds {
-  width: 20px;
-}
-
 section.master-library button.new-album {
   position: absolute;
   right: 0;
@@ -246,7 +222,7 @@ section.master-library button.new-album {
 
 article.album {
   padding: 10px;
-  max-height: 100px;
+  max-height: 103px;
   overflow: scroll;
 }
 
@@ -256,7 +232,7 @@ div.album-info h1.album-title {
 }
 
 div.album-info h1.album-title:hover {
-  background: #d5e4fa
+  background: #d5e4fa;
 }
 
 div.album-info h1.album-title:active {
@@ -297,6 +273,32 @@ li.song span.song-length {
 
 li.song.playing {
   background: #8FB7F2;
+}
+
+/* song form */
+
+form.song input {
+  display: inline;
+  position: static;
+  font-size: 10px;
+}
+
+form.song input.title {
+  width: 130px;
+  margin: 2px 10px 2px 15px;
+}
+
+form.song input.minutes,
+form.song input.seconds {
+  padding: 3px;
+}
+
+form.song input.minutes {
+  width: 10px;
+}
+
+form.song input.seconds {
+  width: 20px;
 }
 
 /* modal */

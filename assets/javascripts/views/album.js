@@ -61,8 +61,8 @@
 
     $title.text(this.album.title);
     $artist.text(this.album.artist);
-    $info.append($title).append($artist).append($form);
-    $album.append($info);
+    $info.append($title).append($artist);
+    $album.append($info).append($form);
 
     $album.append(this.makeSongList());
 
