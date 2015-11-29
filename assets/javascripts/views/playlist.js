@@ -16,7 +16,6 @@
   PlaylistView.prototype.bindEvents = function () {
     this.$rootEl.find('img.skip').on('click', this.nextSong.bind(this));
     this.$rootEl.find('img.rewind').on('click', this.previousSong.bind(this));
-    this.$rootEl.find('ul.songs').on('click', this.chooseSong.bind(this));
   };
 
   // playlist functions to adjust contents
@@ -33,7 +32,7 @@
     this.currentSongIndex = initialSongIdx;
 
     this.$rootEl.find('article.playlist').html($songs);
-    this.$rootEl.find('ul.songs').on('click', this.chooseSong.bind(this));
+    this.$rootEl.find('article.playlist ul.songs').on('click', this.chooseSong.bind(this));
     this.play();
   };
 
@@ -59,7 +58,8 @@
   // removes a song from target idx
   PlaylistView.prototype.removeSong = function (playlistIdx) {
     this.playlist.splice(playlistIdx, 1); // removes from playlist object
-    this.$rootEl.find('ul.songs li').eq(playlistIdx).remove(); // and UI
+    this.$rootEl.find('article.playlist ul.songs li')
+      .eq(playlistIdx).remove(); // and UI
   };
 
   // control player
@@ -140,6 +140,7 @@
 
   // directs what happens when a song is chosen from the playlist
   PlaylistView.prototype.chooseSong = function (e) {
+    debugger
     if (e.ctrlkey || e.metaKey) {
       // if the cmd key is pressed, remove that song
       this.removeSong($(e.target).parent().index());
