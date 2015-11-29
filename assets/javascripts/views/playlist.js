@@ -30,7 +30,7 @@
 
     this.currentSong = album.song((initialSongIdx));
     this.currentSongIndex = initialSongIdx;
-    
+
     this.$rootEl.find('article.playlist').html($songs);
     this.play();
   };
@@ -95,17 +95,20 @@
 
   PlaylistView.prototype.nextSong = function () {
     // removes the finished song
-    this.addToHistory(this.playlist.shift());
-    this.$rootEl.find('article.playlist li.song').eq(0).remove();
+    if (this.playlist.length >= 1) {
+      this.addToHistory(this.playlist.shift());
+      this.$rootEl.find('article.playlist li.song').eq(0).remove();
+    }
+
+    if (this.playlist.length === 0) {
+      this.setInfoToDefault();
+      return;
+    }
 
     // finds the next song; if there is one, goes to it... otherwise resets the UI
-    if (this.playlist[0]) {
-      this.currentSong = this.playlist[0];
-      this.paused = false;
-      this.play();
-    } else if (this.playlist.length <= 1) {
-      this.setInfoToDefault();
-    }
+    this.currentSong = this.playlist[0];
+    this.paused = false;
+    this.play();
   };
 
   PlaylistView.prototype.previousSong = function () {
