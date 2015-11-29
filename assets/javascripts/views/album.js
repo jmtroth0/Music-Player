@@ -49,13 +49,24 @@
     var $title = $('<h1 class="album-title group">');
     $title.data('type', 'title');
     var $artist = $('<h2 class="album-artist group">');
+
+    var $form = $(
+      '<form class="song">' +
+        '<input class="title" type="text" name="song[title]" placeholder="Title">' +
+        '<input class="minutes" type="text" name="song[minutes]" placeholder="M">:' +
+        '<input class="seconds" type="text" name="song[seconds]" placeholder="SS">' +
+        '<button class="create">Create</button>' +
+      '</form>'
+    );
+
     $title.text(this.album.title);
     $artist.text(this.album.artist);
-    $info.append($title).append($artist);
+    $info.append($title).append($artist).append($form);
     $album.append($info);
 
     $album.append(this.makeSongList());
 
+    $album.find('form.song').on('submit', this.createSong.bind(this));
     return $album;
   };
 
@@ -65,14 +76,24 @@
     (album || this.album).each(function (song, idx) {
       if (initialIdx && initialIdx > idx) { return; }
       var $song = song.makeEntry();
-      $song.data({'id': idx, type: 'song'});
+      $song.data({ 'id': idx, type: 'song' });
       $songsList.append($song);
     });
     return $songsList;
   };
 
-  // create a basic form for a new song
-  AlbumView.prototype.makeForm = function () {
-    // var $('<input type="text">')
+  AlbumView.prototype.createSong = function (e) {
+    e.preventDefault();
+    var formData = $(e.currentTarget).serializeJSON();
+    var song = new window.MusicPlayer.Song({
+      title: formData.song.title,
+      time: parseInt(formData.song.minutes) * 60 + parseInt(formData.song.seconds)
+    });
+
+    var $song = song.makeEntry();
+    $song.data({ 'id': this.album.songs.length, type: 'song' });
+    this.$el.find('ul.songs').append($song);
+
+    this.album.songs.push(song);
   };
 })();

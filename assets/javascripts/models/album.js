@@ -17,6 +17,10 @@
     return this.songs[num];
   };
 
+  Album.prototype.push = function (song) {
+    this.songs.push(song);
+  };
+
   Album.prototype.next = function (currentSong) {
     for (var i = 0; i < this.songs.length; i++) {
       if (currentSong === this.songs[i]) {
