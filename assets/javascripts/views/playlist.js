@@ -16,6 +16,7 @@
   PlaylistView.prototype.bindEvents = function () {
     this.$rootEl.find('img.skip').on('click', this.nextSong.bind(this));
     this.$rootEl.find('img.rewind').on('click', this.previousSong.bind(this));
+    this.$rootEl.find('ul.songs').on('click', this.chooseSong.bind(this));
   };
 
   // playlist functions to adjust contents
@@ -32,6 +33,7 @@
     this.currentSongIndex = initialSongIdx;
 
     this.$rootEl.find('article.playlist').html($songs);
+    this.$rootEl.find('ul.songs').on('click', this.chooseSong.bind(this));
     this.play();
   };
 
@@ -52,6 +54,12 @@
       this.playlist.push(song);
       this.$rootEl.find('article.playlist ul.songs').append($song);
     }
+  };
+
+  PlaylistView.prototype.removeSong = function (playlistIdx) {
+    console.log(this.playlist[playlistIdx].title);
+    this.playlist.splice(playlistIdx, 1);
+    this.$rootEl.find('ul.songs li').eq(playlistIdx).remove();
   };
 
   // control player
@@ -126,6 +134,20 @@
       this.addSong(previousSong, true);
 
       this.currentSong = previousSong;
+      this.play();
+    }
+  };
+
+  PlaylistView.prototype.chooseSong = function (e) {
+    if (e.ctrlkey || e.metaKey) {
+      // if the cmd key is pressed, remove that song
+      this.removeSong($(e.target).parent().index());
+    } else {
+      // otherwise skip to that song
+      for (var i = 0, elIdx = $(e.target).parent().index(); i < elIdx; i++) {
+        this.removeSong(0);
+      }
+      this.currentSong = this.playlist[0];
       this.play();
     }
   };
